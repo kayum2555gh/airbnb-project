@@ -74,9 +74,7 @@ const sessionOptions = {
 
 
 
-// app.get("/",(req,res)=>{
-//     res.send("testing");
-// })
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -110,16 +108,16 @@ app.get("/demouser", async (req,res) =>{
     
 })
 
-
+// app.use("/",listingsRouter)
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
 
 
-app.use((req, res, next) => {
-    next(new ExpressError(404, "Page not found!"));
-});
+// app.use((req, res, next) => {
+//     next(new ExpressError(404, "Page not found!"));
+// });
 
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Somthing went wrong" } = err;
